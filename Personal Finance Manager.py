@@ -48,25 +48,25 @@ def main():
             expense = float(input(f"Enter expense {i + 1}: "))
             expenses.append(expense)
 
+        # Calculate income tax
+        tax = calculate_tax(income, deductions)
 
-    # Calculate income tax
-    tax = calculate_tax(income, deductions)
+        # Calculate available income after expenses
+        available_income = budget_planner(income, expenses)
 
-    # Calculate available income after expenses
-    available_income = budget_planner(income, expenses)
+        # Create a formatted table
+        table = f"{'Description':<20}{'Amount ($)':<15}\n"
+        table += "-" * 35 + "\n"
+        table += f"Income{'':<12}${income:<11,.2f}\n"
+        table += f"Deductions{'':<12}${deductions:<11,.2f}\n"
+        table += f"Income Tax{'':<12}${tax:<11,.2f}\n"
+        table += f"Total Expenses{'':<12}${sum(expenses):<11,.2f}\n"
+        table += f"Available Income{'':<12}${available_income:<11,.2f}"
 
-    # Create a formatted table
-    table = f"{'Description':<20}{'Amount ($)':<15}\n"
-    table += "-" * 35 + "\n"
-    table += f"Income{'':<12}${income:<11,.2f}\n"
-    table += f"Deductions{'':<12}${deductions:<11,.2f}\n"
-    table += f"Income Tax{'':<12}${tax:<11,.2f}\n"
-    table += f"Total Expenses{'':<12}${sum(expenses):<11,.2f}\n"
-    table += f"Available Income{'':<12}${available_income:<11,.2f}"
-
-    # Print the table
-    print("\nPersonal Finance Summary")
-    print(table)
+        # Print the table
+        print("\nPersonal Finance Summary")
+        print(table)
 
 if __name__ == "__main__":
     main()
+
